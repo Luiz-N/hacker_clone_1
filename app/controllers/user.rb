@@ -21,7 +21,8 @@ end
 
 #Grab user specific profile page
 get '/user/:id' do
-  
+  @user = current_user
+  erb :profile
 end
 
 #Show list of all user's posts
