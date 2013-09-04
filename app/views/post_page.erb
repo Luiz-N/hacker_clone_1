@@ -1,0 +1,15 @@
+<h1><%= @post.title %></h1>
+<span><%= @post.author.username %></span> <span><%= @post.created_at %></span>
+<% unless @post.content.empty? %>
+  <p><%= @post.content %></p>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <ul>
+    <li>
+      <p><%= comment.content %></p>
+      <span><%= comment.get_username %></span>
+    </li>
+  </ul>
+<% end %>
+

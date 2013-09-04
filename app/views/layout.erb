@@ -11,13 +11,28 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
-
+  <link rel="stylesheet" href="/css/util.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
   <title></title>
 </head>
 <body>
-  <%= yield %>
+  <nav class="cf">
+    <ul>
+      <li><a href="">H@ck3r News</a></li>
+      <% if @user %>
+        <li><a href="/user/<%= @user.id %>">Profile</a></li>
+        <li><a href="/post/new">Submit Post</a></li>
+      <% end %>
+      <li><a href="/user/new">New User</a></li>
+      <li><a href="/user/login">Login</a></li>
+      <li><a href="/user/logout">Logout</a></li>
+    </ul>
+    
+  </nav>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
