@@ -26,11 +26,17 @@ get '/user/:id' do
 end
 
 #Show list of all user's posts
-get '/:username/posts' do 
+get '/user/:id/posts' do
+  @user = current_user
+  @posts = Post.where(author_id: params[:id])
+  erb :user_posts
 end
 
 #Show list of all posts that user commented on
-get '/:username/comments' do 
+get '/user/:id/comments' do 
+  @user = current_user
+  @comments = Comment.where(author_id: params[:id])
+  erb :user_comments
 end
 
 

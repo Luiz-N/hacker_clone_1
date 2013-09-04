@@ -7,6 +7,7 @@ end
 
 #Find and go to specific post page
 get '/post/:id' do
+  @user = current_user
   @post = Post.find(params[:id])
   erb :post_page
 end

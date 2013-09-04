@@ -4,17 +4,20 @@
   <p><%= @post.content %></p>
 <% end %>
 
-<% @post.comments.each do |comment| %>
+
   <ul>
-    <li>
-      <p><%= comment.content %></p>
-      <span><%= comment.get_username %></span>
-    </li>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <p><%= comment.content %></p>
+        <span><%= comment.get_username %></span>
+      </li>
+    <% end %>
   </ul>
-<% end %>
+
 
 <form action="/comment" method="POST">
   <label for="comment"></label>
   <input id="comment" type="text" name="comment" placeholder="comment here">
   <input type="submit" value="submit comment">
+  <input type="hidden" name="post_id" value="<%= @post.id %>">
 </form>
