@@ -13,8 +13,15 @@ get '/user/login' do
   erb :login
 end
 
+
+get '/user/logout' do 
+  session.clear
+  redirect "/"
+end
+
 #Grab user specific profile page
 get '/user/:id' do
+  p "This is the problem"
 end
 
 #Show list of all user's posts
@@ -25,9 +32,9 @@ end
 get '/:username/comments' do 
 end
 
-get '/user/logout' do 
-  redirect "/"
-end
+
+
+
 
 
 # POST ####################
@@ -61,8 +68,8 @@ post '/user/login' do
   end
 end
 
-post '/logout' do
-  session.clear
-  redirect "/"
-end
+# post '/logout' do
+#   # session.clear
+#   redirect "/"
+# end
 
