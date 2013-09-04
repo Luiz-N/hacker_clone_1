@@ -1,0 +1,5 @@
+<ul>
+  <% @comments.each do |comment| %>
+    <li><a href="/post/<%= comment.post_id %>"><%=comment.content%></a></li>
+  <% end %>
+</ul>

@@ -1,0 +1,13 @@
+<h1>New Post</h1>
+<form action="/posts/<%=@post.id%>" method="POST">
+  <label for="title"></label>
+  <input id="title" type="text" name="post[title]" placeholder="Post Title" value="<%=@post.try(:title)%>">
+  <label for="url"></label>
+  <input id="url" type="text" name="post[url]" placeholder="http://www.google.com" value="<%=@post.try(:url)%>">
+  <label for="content"></label>
+  <input id="content" name="post[content]" placeholder="Content" value="<%=@post.try(:content)%>"></input>
+  <input type="submit" value="Update Post">
+</form>
+<form action="/post/<%=@post.id%>/delete" method="POST">
+  <input type="submit" value= "Delete Post">
+</form>
