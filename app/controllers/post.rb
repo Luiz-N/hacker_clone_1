@@ -17,7 +17,9 @@ end
 
 #Create new post 
 post '/posts' do 
-  @post = Post.create(params[:post])
-  # @post.author_id = @user.id #come back and replace with session[:user_id]
+  @post = Post.new(params[:post])
+  @post.author_id = session[:user_id]
+  @post.save
+
   redirect "/"
 end

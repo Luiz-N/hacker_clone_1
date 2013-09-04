@@ -21,7 +21,7 @@ end
 
 #Grab user specific profile page
 get '/user/:id' do
-  p "This is the problem"
+  
 end
 
 #Show list of all user's posts
@@ -52,18 +52,19 @@ post '/user/new' do
 end
 
 post '/user/login' do
-  @user = User.find_by_email(params[:email])
-  if @user 
-    if @user.password == params[:password]
-      session[:user_id] = @user.id
+  
+  if User.find_by_email(params[:email])
+    @login = User.find_by_email(params[:email])
+    if @login.password == params[:password]
+      session[:user_id] = @login.id
       redirect "/"
     else
-      @error = "Incorrent email and/or password"
+      @error = "Incorrect email and/or password"
       erb :login #email or pw incorrect
       # redirect "/user/login"
     end
   else
-      @error = "Incorrent email and/or password"
+      @error = "Incorrect email and/or password"
       erb :login #error no user message
   end
 end

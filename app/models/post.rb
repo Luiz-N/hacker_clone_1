@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   has_many :comments
   has_many :commentors, through: :comments, source: :author
   # go to users table, and look up author field'
-  after_save :set_url,  if: :url_nil?
+  after_save :set_url,  if: :url_empty?
 
   validates :title, presence: true
 
@@ -12,8 +12,8 @@ class Post < ActiveRecord::Base
     self.update_attributes(url: "/post/#{self.id}")
   end
 
-  def url_nil?
-    self.url.nil?
+  def url_empty?
+    self.url.empty?
   end
 
 end
